@@ -1,8 +1,7 @@
-import PropTypes from "prop-types";
 import Header from "../components/Header";
-import { innovationType, quizConfig } from "../config";
+import { quizConfig } from "../config";
 import { useCallback, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { mint } from "../service";
 function shuffle(array = []) {
   let currentIndex = array.length,
     randomIndex;
@@ -60,34 +59,48 @@ const QuizPage = () => {
   }, [answerCollector]);
 
   const winnerInnovationType = useMemo(() => {
-    const listWinner = Object.keys(calculation).reduce(
-      (acc = [], next, index) => {
-        if (acc.length == 0) {
-          acc[index] = next;
-        }
-        const lastScore = calculation[acc[0]];
-        const nextScore = calculation[next];
+    console.log({
+      calculation,
+    });
+    const listWinner = Object.keys(calculation).reduce((acc = [], next) => {
+      if (acc.length == 0) {
+        acc[0] = next;
+        return acc;
+      }
+      const lastScore = calculation[acc[0]];
+      const nextScore = calculation[next];
 
-        if (lastScore && lastScore > nextScore) {
-          return acc;
-        }
-        if (lastScore && lastScore < nextScore) {
-          acc[0] = next;
-          return acc;
-        }
-        if (lastScore && lastScore === nextScore) {
-          acc.push(next);
-          return acc;
-        }
-      },
-      []
-    );
+      if (lastScore && lastScore > nextScore) {
+        return acc;
+      } else if (lastScore && lastScore < nextScore) {
+        acc[0] = next;
+        return acc;
+      } else if (lastScore && lastScore === nextScore) {
+        acc.push(next);
+        return acc;
+      }
+    }, []);
+    if (isDisabledButton) {
+      return "";
+    }
+
     return shuffle(listWinner)[0];
-  }, [calculation]);
+  }, [calculation, isDisabledButton]);
 
-  const handleSubmitForm = useCallback(() => {
+  const handleSubmitForm = useCallback(async () => {
     //send address and answer and score to database
-  }, [winnerInnovationType, answerCollector]);
+    await mint({
+      walletAddress: "0x348A285Aa6Fb9F083634664136929806B8384dAF",
+      quiz: {
+        answerCollector,
+        score: calculation,
+      },
+      innovationType: winnerInnovationType,
+    });
+  }, [answerCollector, calculation, winnerInnovationType]);
+  console.log({
+    winnerInnovationType,
+  });
   return (
     <div className="py-4 gap-y-11">
       <Header />
