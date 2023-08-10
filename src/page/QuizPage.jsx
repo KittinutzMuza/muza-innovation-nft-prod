@@ -1,9 +1,27 @@
 import PropTypes from "prop-types";
 import Header from "../components/Header";
 import { innovationType, quizConfig } from "../config";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+function shuffle(array = []) {
+  let currentIndex = array.length,
+    randomIndex;
 
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
 const QuizPage = () => {
   const [answerCollector, setAnswerCollector] = useState({});
   const onChange = (quiz) => (e) => {
@@ -35,19 +53,41 @@ const QuizPage = () => {
     };
     const result = Object.keys(answerCollector).reduce((acc, next) => {
       const choiceSelect = answerCollector[next];
-
       acc[choiceSelect.answer.value] += choiceSelect.score;
       return acc;
     }, initialMappingQuiz);
     return result;
   }, [answerCollector]);
 
-  console.log({
-    calculation,
-  });
-  const handleSubmitForm = () => {
+  const winnerInnovationType = useMemo(() => {
+    const listWinner = Object.keys(calculation).reduce(
+      (acc = [], next, index) => {
+        if (acc.length == 0) {
+          acc[index] = next;
+        }
+        const lastScore = calculation[acc[0]];
+        const nextScore = calculation[next];
+
+        if (lastScore && lastScore > nextScore) {
+          return acc;
+        }
+        if (lastScore && lastScore < nextScore) {
+          acc[0] = next;
+          return acc;
+        }
+        if (lastScore && lastScore === nextScore) {
+          acc.push(next);
+          return acc;
+        }
+      },
+      []
+    );
+    return shuffle(listWinner)[0];
+  }, [calculation]);
+
+  const handleSubmitForm = useCallback(() => {
     //send address and answer and score to database
-  };
+  }, [winnerInnovationType, answerCollector]);
   return (
     <div className="py-4 gap-y-11">
       <Header />
