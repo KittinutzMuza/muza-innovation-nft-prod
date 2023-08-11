@@ -37,7 +37,7 @@ const ResultPage = () => {
       style={{
         backgroundColor: THEME.background,
       }}
-      className="py-4 h-[100vh] overflow-hidden"
+      className="py-4 pt-[4em] h-[100vh] overflow-hidden"
     >
       <div className="relative">
         <Lottie
@@ -46,7 +46,7 @@ const ResultPage = () => {
           height={250}
           width={250}
         />
-        <div className="absolute transform rotate-[340deg] top-[150px] left-0 right-0 text-center">
+        <div className="absolute top-[50px] transform rotate-[340deg] left-0 right-0 text-center">
           <img
             className="h-[150px] ml-auto mr-auto"
             height={10}
@@ -55,7 +55,7 @@ const ResultPage = () => {
           />
         </div>
       </div>
-      <div className="px-6 mt-[8em]">
+      <div className="px-6 mt-[2em]">
         <div>
           <span className="font-[600] text-[18px] text-white">
             Your innovator type is {innovatorType}
