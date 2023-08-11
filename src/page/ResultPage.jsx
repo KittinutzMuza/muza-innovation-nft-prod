@@ -2,11 +2,6 @@ import Lottie from "react-lottie";
 import firework from "../assets/lotties/animation_firework2.json";
 import { innovatorScreenTheme } from "../config";
 
-import specialistBanner from "../assets/images/banner/specialist.png";
-import visionaryBanner from "../assets/images/banner/visionary.png";
-import explorerBanner from "../assets/images/banner/explorer.png";
-import advocateBanner from "../assets/images/banner/advocate.png";
-import builderBanner from "../assets/images/banner/builder.png";
 import specialistNFT from "../assets/images/specialist.png";
 import visionaryNFT from "../assets/images/visionary.png";
 import explorerNFT from "../assets/images/explorer.png";
@@ -18,16 +13,6 @@ import { useParams } from "react-router-dom";
 const ResultPage = () => {
   let { innovatorType } = useParams();
   const THEME = innovatorScreenTheme[innovatorType];
-  const innovatorBanner = useMemo(() => {
-    const mapBanner = {
-      SPECIALIST: specialistBanner,
-      EXPLORER: explorerBanner,
-      VISIONARY: visionaryBanner,
-      ADVOCATE: advocateBanner,
-      BUILDER: builderBanner,
-    };
-    return mapBanner[innovatorType];
-  }, [innovatorType]);
   const innovatorNFT = useMemo(() => {
     const mapBanner = {
       SPECIALIST: specialistNFT,
@@ -52,16 +37,25 @@ const ResultPage = () => {
       style={{
         backgroundColor: THEME.background,
       }}
-      className="py-4"
+      className="py-4 h-[100vh] overflow-hidden"
     >
-      <div className="md:h-[500px] flex justify-center mt-11">
-        <img
-          className=""
-          src={innovatorBanner}
-          alt={`${innovatorType} Banner`}
+      <div className="relative">
+        <Lottie
+          className="absolute"
+          options={fireworkOptions}
+          height={250}
+          width={250}
         />
+        <div className="absolute transform rotate-[340deg] top-[150px] left-0 right-0 text-center">
+          <img
+            className="h-[150px] ml-auto mr-auto"
+            height={10}
+            src={innovatorNFT}
+            alt={`${innovatorType} NFT`}
+          />
+        </div>
       </div>
-      <div className="px-6 mt-5 overflow-hidden">
+      <div className="px-6 mt-[8em]">
         <div>
           <span className="font-[600] text-[18px] text-white">
             Your innovator type is {innovatorType}
@@ -75,33 +69,15 @@ const ResultPage = () => {
             suspendisse sed dignissim
           </span>
         </div>
-        <div className="relative py-[10vh]">
-          <Lottie
-            className="absolute"
-            options={fireworkOptions}
-            height={250}
-            width={250}
-          />
-          <div className="absolute transform rotate-[340deg] top-[150px] left-0 right-0 text-center">
-            <img
-              className="h-[150px] ml-auto mr-auto"
-              height={10}
-              src={innovatorNFT}
-              alt={`${innovatorType} NFT`}
-            />
-          </div>
-          {/* <Lottie
-            className="absolute"
-            options={congratsOptions}
-            height={500}
-            width={200}
-          /> */}
-        </div>
-        {/* <div className="my-8 px-8 md:w-[400px] m-auto w-full">
-          <button className="bg-white px-[6em] py-5 w-full m-auto rounded-full text-3sm font-bold">
+
+        <div className="text-center my-8 px-8 mt-[5em]">
+          <a
+            href="muza://"
+            className="bg-white px-[6em] py-5 w-full m-auto rounded-full text-3sm font-bold"
+          >
             Get NFT
-          </button>
-        </div> */}
+          </a>
+        </div>
       </div>
     </div>
   );
