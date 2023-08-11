@@ -28,7 +28,7 @@ const LandingPage = () => {
     if (!isPlayed) {
       navigate(
         `/quiz?walletAddress=${searchParams.get(
-          "authToken"
+          "walletAddress"
         )}&authToken=${searchParams.get("authToken")}`
       );
     }
