@@ -182,26 +182,21 @@ export const innovatorScreenTheme = {
   SPECIALIST: {
     background: "#9E1312",
     nftImage: "specialist",
-    bannerImage: "specialist.png",
   },
   EXPLORER: {
     background: "#056C3C",
     nftImage: "explorer",
-    bannerImage: "explorer.png",
   },
   VISIONARY: {
     background: "#ED9F03",
     nftImage: "visionary",
-    bannerImage: "visionary.png",
   },
   ADVOCATE: {
     background: "#FF6600",
     nftImage: "advocate",
-    bannerImage: "advocate.png",
   },
   BUILDER: {
     background: "#BB8559",
     nftImage: "builder",
-    bannerImage: "builder.png",
   },
 };
