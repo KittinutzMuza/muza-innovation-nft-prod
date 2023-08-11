@@ -1,9 +1,20 @@
+import { Web3Button } from "@web3modal/react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import { useAccount } from "wagmi";
 
 const LandingPage = () => {
+  const { address, ...props } = useAccount();
+  console.log({
+    props,
+  });
   return (
     <div className="py-4">
+      {address && (
+        <div className="flex justify-end pr-6">
+          <Web3Button className="width-full" />
+        </div>
+      )}
       <Header />
       <div className="px-6 mt-9">
         <div className="text-[18px] font-bold">What’s innovator </div>
@@ -16,13 +27,20 @@ const LandingPage = () => {
           </p>
         </div>
       </div>
-      <div className="mt-12 px-8 md:flex justify-center m-auto w-full">
-        <Link to="/quiz">
-          <button className="bg-[#9B74DA] px-[6em] py-5 w-full m-auto text-white rounded-full text-3sm font-bold">
-            Play now
-          </button>
-        </Link>
-      </div>
+      {!address && (
+        <div className="flex justify-center mt-[10em]">
+          <Web3Button className="width-full" />
+        </div>
+      )}
+      {address && (
+        <div className="mt-12 px-8 width-full justify-center">
+          <Link to="/quiz">
+            <button className="bg-[#9B74DA] px-4 py-6 w-full m-auto text-white rounded-full text-3sm font-bold">
+              Play now
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

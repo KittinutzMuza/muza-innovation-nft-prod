@@ -3,6 +3,7 @@ import { quizConfig } from "../config";
 import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { mint } from "../service";
+import { useAccount } from "wagmi";
 function shuffle(array = []) {
   let currentIndex = array.length,
     randomIndex;
@@ -90,22 +91,20 @@ const QuizPage = () => {
     return shuffle(listWinner)[0];
   }, [calculation, isDisabledButton]);
 
+  const { address } = useAccount();
+
   const handleSubmitForm = useCallback(async () => {
     //send address and answer and score to database
-    try {
-      await mint({
-        walletAddress: "0x348A285Aa6Fb9F083634664136929806B8384dAF",
-        quiz: {
-          answerCollector,
-          score: calculation,
-        },
-        innovationType: winnerInnovationType,
-      });
-      navigate(`/result/${winnerInnovationType}`);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [answerCollector, calculation, winnerInnovationType]);
+    await mint({
+      walletAddress: address,
+      quiz: {
+        answerCollector,
+        score: calculation,
+      },
+      innovationType: winnerInnovationType,
+    });
+    navigate(`/result/${winnerInnovationType}`);
+  }, [navigate, address, answerCollector, calculation, winnerInnovationType]);
   console.log({
     winnerInnovationType,
   });
