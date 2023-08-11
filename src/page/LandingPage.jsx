@@ -1,22 +1,29 @@
 import { useEffect } from "react";
 import Header from "../components/Header";
-import { Link, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const LandingPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  useEffect(() => {}, [searchParams]);
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!searchParams.get("authToken") && !searchParams.get("walletAddress")) {
+      navigate("/download-muza");
+    }
+  }, [searchParams, navigate]);
+  const handleNavigateToQuiz = () => {
+    navigate(
+      `/quiz?authToken=${searchParams.get(
+        "authToken"
+      )}&walletAddress=${searchParams.get("authToken")}`
+    );
+  };
   return (
     <div className="py-4">
+      <div className="text-right pr-6 text-[12px] text-[#80808060]">Wallet address: {searchParams.get("walletAddress")}</div>
       <Header />
       <div className="px-6 mt-9">
         <div className="text-[18px] font-bold">What’s innovator </div>
-        <div className="mt-[15px] pl-2">
-          <p className="text-[14px] leading-5 font-[300] text-[#808080]">
-            {searchParams.get("authToken")}
-            {searchParams.get("walletAddress")}
-          </p>
-        </div>
         <div className="mt-[15px] pl-2">
           <p className="text-[14px] leading-5 font-[300] text-[#808080]">
             Lorem ipsum dolor sit amet consectetur. Fermentum ut lectus augue
@@ -27,11 +34,12 @@ const LandingPage = () => {
         </div>
       </div>
       <div className="mt-12 px-8 fmd:flex md:w-[300px] justify-center m-auto w-full">
-        <Link to="/quiz">
-          <button className="bg-[#9B74DA] px-4 py-5 w-full m-auto text-white rounded-full text-3sm font-bold">
-            Play now
-          </button>
-        </Link>
+        <button
+          onClick={handleNavigateToQuiz}
+          className="bg-[#9B74DA] px-4 py-5 w-full m-auto text-white rounded-full text-3sm font-bold"
+        >
+          Play now
+        </button>
       </div>
     </div>
   );

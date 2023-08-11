@@ -4,10 +4,9 @@ import { quizConfig } from "../config";
 import searching from "../assets/lotties/animation_searching.json";
 import loading from "../assets/lotties/animation_loading.json";
 
-import { useCallback, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { mint } from "../service";
-import { useAccount } from "wagmi";
 function shuffle(array = []) {
   let currentIndex = array.length,
     randomIndex;
@@ -29,6 +28,7 @@ function shuffle(array = []) {
 }
 const QuizPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [onMinting, setOnMinting] = useState(false);
 
   const [answerCollector, setAnswerCollector] = useState({});
@@ -46,6 +46,11 @@ const QuizPage = () => {
       },
     }));
   };
+  useEffect(() => {
+    if (!searchParams.get("authToken") && !searchParams.get("walletAddress")) {
+      navigate("/download-muza");
+    }
+  }, [searchParams, navigate]);
 
   const isDisabledButton = useMemo(() => {
     return Object.keys(answerCollector).length !== quizConfig.length;
@@ -96,14 +101,12 @@ const QuizPage = () => {
     return shuffle(listWinner)[0];
   }, [calculation, isDisabledButton]);
 
-  const { address } = useAccount();
-
   const handleSubmitForm = useCallback(async () => {
     //send address and answer and score to database
     try {
       setOnMinting(true);
       await mint({
-        walletAddress: address,
+        walletAddress: searchParams.get("walletAddress"),
         quiz: {
           answerCollector,
           score: calculation,
@@ -116,7 +119,13 @@ const QuizPage = () => {
     } finally {
       setOnMinting(false);
     }
-  }, [navigate, address, answerCollector, calculation, winnerInnovationType]);
+  }, [
+    navigate,
+    answerCollector,
+    calculation,
+    winnerInnovationType,
+    searchParams,
+  ]);
   console.log({
     winnerInnovationType,
   });

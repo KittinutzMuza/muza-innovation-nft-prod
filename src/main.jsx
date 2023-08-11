@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./page/LandingPage.jsx";
 import QuizPage from "./page/QuizPage.jsx";
 import ResultPage from "./page/ResultPage.jsx";
+import DownloadMUZA from "./page/DownloadMUZA.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/result/:innovatorType",
     element: <ResultPage />,
+  },
+  {
+    path: "/download-muza",
+    element: <DownloadMUZA />,
   },
 ]);
 import {
