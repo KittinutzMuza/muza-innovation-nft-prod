@@ -1,8 +1,13 @@
-import PropTypes from "prop-types";
+import { Web3Button } from "@web3modal/react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import { useAccount } from "wagmi";
 
 const LandingPage = () => {
+  const { address, ...props } = useAccount();
+  console.log({
+    props,
+  });
   return (
     <div className="py-4 gap-y-11">
       <Header />
@@ -15,13 +20,18 @@ const LandingPage = () => {
           sed dignissim
         </p>
       </div>
-      <div className="mt-12 px-8 width-full">
-        <Link to="/quiz">
-          <button className="bg-[#9B74DA] px-4 py-6 w-full m-auto text-white rounded-full text-3sm font-bold">
-            Play now
-          </button>
-        </Link>
+      <div className="flex justify-center my-4">
+        <Web3Button className="width-full" />
       </div>
+      {address && (
+        <div className="mt-12 px-8 width-full justify-center">
+          <Link to="/quiz">
+            <button className="bg-[#9B74DA] px-4 py-6 w-full m-auto text-white rounded-full text-3sm font-bold">
+              Play now
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
