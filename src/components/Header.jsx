@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import Logo from "../assets/muza-logo.svg";
 import Present from "../assets/muza-tech-suace-present.svg";
 const Header = () => {

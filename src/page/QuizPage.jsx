@@ -1,8 +1,7 @@
-import PropTypes from "prop-types";
 import Header from "../components/Header";
-import { innovationType, quizConfig } from "../config";
+import { quizConfig } from "../config";
 import { useCallback, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function shuffle(array = []) {
   let currentIndex = array.length,
     randomIndex;
@@ -23,6 +22,8 @@ function shuffle(array = []) {
   return array;
 }
 const QuizPage = () => {
+  const navigate = useNavigate();
+
   const [answerCollector, setAnswerCollector] = useState({});
   const onChange = (quiz) => (e) => {
     const {
@@ -86,6 +87,7 @@ const QuizPage = () => {
   }, [calculation]);
 
   const handleSubmitForm = useCallback(() => {
+    navigate('/result?innovatorType=visionary');
     //send address and answer and score to database
   }, [winnerInnovationType, answerCollector]);
   return (
