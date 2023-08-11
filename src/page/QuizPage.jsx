@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import { quizConfig } from "../config";
 import { useCallback, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { mint } from "../service";
 import { useAccount } from "wagmi";
 function shuffle(array = []) {
@@ -23,6 +24,8 @@ function shuffle(array = []) {
   return array;
 }
 const QuizPage = () => {
+  const navigate = useNavigate();
+
   const [answerCollector, setAnswerCollector] = useState({});
   const onChange = (quiz) => (e) => {
     const {
@@ -100,15 +103,16 @@ const QuizPage = () => {
       },
       innovationType: winnerInnovationType,
     });
-  }, [address, answerCollector, calculation, winnerInnovationType]);
+    navigate(`/result/${winnerInnovationType}`);
+  }, [navigate, address, answerCollector, calculation, winnerInnovationType]);
   console.log({
     winnerInnovationType,
   });
   return (
-    <div className="py-4 gap-y-11">
+    <div className="py-4 pb-[4em] gap-y-11">
       <Header />
-      <div className="px-8 my-9">
-        <h3 className="text-3sm font-bold">
+      <div className="px-6 mt-9">
+        <h3 className="text-[18px] font-bold">
           What types of innovator you are ?
         </h3>
       </div>
@@ -116,13 +120,13 @@ const QuizPage = () => {
         {quizConfig.map((quiz, quizIndex) => {
           const answers = quiz?.answers ?? [];
           return (
-            <div key={quiz.questionId} className="my-4">
-              <label className="font-bold my-2">
+            <div key={quiz.questionId} className="mb-8 mt-6">
+              <label className="font-[800] text-[14px] my-2">
                 {quizIndex + 1}. {quiz.title}
               </label>
               {answers.map((answer, index) => {
                 return (
-                  <div className="my-2 flex items-start" key={answer.label}>
+                  <div className="mt-3 flex items-start" key={answer.label}>
                     <input
                       className="mt-1 mx-2"
                       id={`quiz-` + quiz.questionId + index}
@@ -131,7 +135,10 @@ const QuizPage = () => {
                       onChange={onChange(quiz)}
                       name={`quiz-` + quiz.questionId}
                     />
-                    <label htmlFor={`quiz-` + quiz.questionId + index}>
+                    <label
+                      className="text-[14px]"
+                      htmlFor={`quiz-` + quiz.questionId + index}
+                    >
                       {answer.label}
                     </label>
                   </div>
@@ -141,10 +148,10 @@ const QuizPage = () => {
           );
         })}
       </div>
-      <div className="mt-12 px-8 width-full">
+      <div className="mt-12 px-8 md:flex md:w-[300px] justify-center m-auto w-full">
         <button
-          className={`px-4 py-6 w-full m-auto text-white rounded-full text-3sm font-bold ${
-            isDisabledButton ? "bg-[#808080]" : "bg-[#9B74DA]"
+          className={`px-[6em] py-5 w-full m-auto text-white rounded-full text-3sm font-bold ${
+            isDisabledButton ? "bg-[#80808060]" : "bg-[#9B74DA]"
           }`}
           disabled={isDisabledButton}
           onClick={handleSubmitForm}

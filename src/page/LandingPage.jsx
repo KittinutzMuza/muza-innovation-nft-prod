@@ -9,20 +9,29 @@ const LandingPage = () => {
     props,
   });
   return (
-    <div className="py-4 gap-y-11">
+    <div className="py-4">
+      {address && (
+        <div className="flex justify-end pr-6">
+          <Web3Button className="width-full" />
+        </div>
+      )}
       <Header />
-      <div className="px-8 mt-9">
-        <h3 className="text-3sm font-bold">MUZWhat’s innovator </h3>
-        <p className="text-3sm  text-neutral-500">
-          Lorem ipsum dolor sit amet consectetur. Fermentum ut lectus augue orci
-          eu a sed facilisis. Phasellus odio placerat ornare urna id nullam. Ac
-          nunc praesent feugiat ut sapien varius et. Eu nisi quam suspendisse
-          sed dignissim
-        </p>
+      <div className="px-6 mt-9">
+        <div className="text-[18px] font-bold">What’s innovator </div>
+        <div className="mt-[15px] pl-2">
+          <p className="text-[14px] leading-5 font-[300] text-[#808080]">
+            Lorem ipsum dolor sit amet consectetur. Fermentum ut lectus augue
+            orci eu a sed facilisis. Phasellus odio placerat ornare urna id
+            nullam. Ac nunc praesent feugiat ut sapien varius et. Eu nisi quam
+            suspendisse sed dignissim
+          </p>
+        </div>
       </div>
-      <div className="flex justify-center my-4">
-        <Web3Button className="width-full" />
-      </div>
+      {!address && (
+        <div className="flex justify-center mt-[10em]">
+          <Web3Button className="width-full" />
+        </div>
+      )}
       {address && (
         <div className="mt-12 px-8 width-full justify-center">
           <Link to="/quiz">
