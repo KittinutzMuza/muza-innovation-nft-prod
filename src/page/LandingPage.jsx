@@ -33,9 +33,9 @@ const LandingPage = () => {
         </div>
       )}
       {address && (
-        <div className="mt-12 px-8 width-full justify-center">
+        <div className="mt-12 px-8 fmd:flex md:w-[300px] justify-center m-auto w-full">
           <Link to="/quiz">
-            <button className="bg-[#9B74DA] px-4 py-6 w-full m-auto text-white rounded-full text-3sm font-bold">
+            <button className="bg-[#9B74DA] px-4 py-5 w-full m-auto text-white rounded-full text-3sm font-bold">
               Play now
             </button>
           </Link>
