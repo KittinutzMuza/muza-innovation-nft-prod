@@ -10,11 +10,6 @@ const LandingPage = () => {
   });
   return (
     <div className="py-4">
-      {address && (
-        <div className="flex justify-end pr-6">
-          <Web3Button className="width-full" />
-        </div>
-      )}
       <Header />
       <div className="px-6 mt-9">
         <div className="text-[18px] font-bold">What’s innovator </div>
