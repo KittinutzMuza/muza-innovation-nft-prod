@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { verify } from "../service";
+import { fetchUserWallet, verify } from "../service";
+import jwt_decode from "jwt-decode";
 
 const LandingPage = () => {
   const [searchParams] = useSearchParams();
   const [isPlayed, setIsPlayed] = useState(false);
+  const [walletAddress, setWalletAddress] = useState("");
   const navigate = useNavigate();
-
+  const token = searchParams.get("authToken");
   useEffect(() => {
     if (!searchParams.get("authToken")) {
       navigate("/unauthorized");
@@ -15,7 +17,7 @@ const LandingPage = () => {
       (async () => {
         try {
           const res = await verify({
-            walletAddress: searchParams.get("walletAddress"),
+            walletAddress: walletAddress,
           });
           setIsPlayed(res.data.isExist);
         } catch (err) {
@@ -23,12 +25,22 @@ const LandingPage = () => {
         }
       })();
     }
-  }, [searchParams, navigate]);
+  }, [searchParams, navigate, walletAddress]);
   const handleNavigateToQuiz = () => {
     if (!isPlayed) {
-      navigate(`/quiz?walletAddress=${searchParams.get("walletAddress")}`);
+      navigate(`/quiz?walletAddress=${walletAddress}`);
     }
   };
+  useEffect(() => {
+    async function fetchWalletAddress() {
+      const decodedJWT = jwt_decode(token);
+
+      const data = await fetchUserWallet(token, decodedJWT?.userId);
+      const walletAddress = data.data.user.wallet.address;
+      setWalletAddress(walletAddress);
+    }
+    fetchWalletAddress();
+  }, [token]);
   return (
     <div className="py-4">
       <Header isMain />
