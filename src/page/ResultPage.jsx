@@ -31,53 +31,63 @@ const ResultPage = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-
+  const handleCloseWebView = () => {
+    location.href = "muza://";
+  };
   return (
     <div
       style={{
         backgroundColor: THEME.background,
       }}
-      className="py-4 pt-[4em] h-[100vh] overflow-hidden"
+      className="py-[2em] overflow-hidden"
     >
-      <div className="relative">
+      <div className="px-6 font-bold text-[24px] text-white">THE {innovatorType}</div>
+      <div className="relative h-[340px]">
         <Lottie
           className="absolute"
           options={fireworkOptions}
-          height={250}
-          width={250}
+          height={300}
+          width={300}
         />
-        <div className="absolute top-[50px] transform rotate-[340deg] left-0 right-0 text-center">
+        <div className="absolute top-[50px] left-0 right-0 text-center">
           <img
-            className="h-[150px] ml-auto mr-auto"
-            height={10}
+            className="h-[250px] ml-auto mr-auto"
             src={innovatorNFT}
             alt={`${innovatorType} NFT`}
           />
         </div>
       </div>
-      <div className="px-6 mt-[2em]">
+      <div className="px-8">
         <div>
+          <span className="text-[16px] text-white">
+            Your innovator types is
+          </span>
           <span className="font-[600] text-[18px] text-white">
-            Your innovator type is {innovatorType}
+            {" "}
+            THE {innovatorType}
           </span>
         </div>
-        <div className="mt-2">
-          <span className="text-white text-[14px]">
-            Lorem ipsum dolor sit amet consectetur. Fermentum ut lectus augue
-            orci eu a sed facilisis. Phasellus odio placerat ornare urna id
-            nullam. Ac nunc praesent feugiat ut sapien varius et. Eu nisi quam
-            suspendisse sed dignissim
+        <div className="mt-4">
+          <span className="text-white text-[13px] leading-[18px]">
+            {THEME.description}
           </span>
         </div>
-
-        <div className="text-center my-8 px-8 mt-[5em]">
-          <a
-            href="muza://"
-            className="bg-white px-[6em] py-5 w-full m-auto rounded-full text-3sm font-bold"
-          >
-            Get NFT
-          </a>
+        <div className="text-white mt-6 text-[13px]">
+          Key traits of an {innovatorType} innovator type include:
         </div>
+        <div
+          dangerouslySetInnerHTML={{ __html: THEME.descriptionKey }}
+          className="text-white mt-2 text-[13px] leading-[20px]"
+        ></div>
+        <div className="mt-4 text-white leading-[20px] text-[13px]">
+          {THEME.descriptionEnd}
+        </div>
+      </div>
+      <div
+        onClick={handleCloseWebView}
+        className="mt-10 bg-white px-8 mx-5 text-center py-4 rounded-full text-3sm font-bold"
+      >
+        Get NFT
       </div>
     </div>
   );

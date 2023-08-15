@@ -1,5 +1,5 @@
 const DownloadMUZA = () => {
-  return <div className="py-4">Download MUZA</div>;
+  return <div className="p-4">Unauthorized</div>;
 };
 
 export default DownloadMUZA;

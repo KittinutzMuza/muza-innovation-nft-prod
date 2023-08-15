@@ -9,8 +9,8 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!searchParams.get("authToken") && !searchParams.get("walletAddress")) {
-      navigate("/download-muza");
+    if (!searchParams.get("walletAddress")) {
+      navigate("/unauthorized");
     } else {
       (async () => {
         try {
@@ -26,33 +26,23 @@ const LandingPage = () => {
   }, [searchParams, navigate]);
   const handleNavigateToQuiz = () => {
     if (!isPlayed) {
-      navigate(
-        `/quiz?walletAddress=${searchParams.get(
-          "walletAddress"
-        )}&authToken=${searchParams.get("authToken")}`
-      );
+      navigate(`/quiz?walletAddress=${searchParams.get("walletAddress")}`);
     }
   };
   return (
     <div className="py-4">
-      <div className="text-right pr-6 text-[12px] text-[#80808060]">
-        Wallet address: {searchParams.get("walletAddress")}
-      </div>
       <Header isMain />
-      <div className="text-center mt-9">
-        <div className="text-[18px] font-bold">
-          What types of innovator you are ?
+      <div className="flex justify-center mt-9">
+        <div>
+          <div className="text-[18px] font-bold">
+            What types of innovator you are ?
+          </div>
+          <div className="mt-2 text-[12px] text-[#808080] font-[300]">
+            Find out your innovator type through our quiz
+          </div>
         </div>
-        {/* <div className="mt-[15px] pl-2">
-          <p className="text-[14px] leading-5 font-[300] text-[#808080]">
-            Lorem ipsum dolor sit amet consectetur. Fermentum ut lectus augue
-            orci eu a sed facilisis. Phasellus odio placerat ornare urna id
-            nullam. Ac nunc praesent feugiat ut sapien varius et. Eu nisi quam
-            suspendisse sed dignissim
-          </p>
-        </div> */}
       </div>
-      <div className="mt-12 px-8 fmd:flex md:w-[300px] justify-center m-auto w-full">
+      <div className="mt-3 px-8 fmd:flex md:w-[300px] justify-center m-auto w-full">
         <button
           onClick={handleNavigateToQuiz}
           className={`${
@@ -62,6 +52,11 @@ const LandingPage = () => {
           {isPlayed ? "Already Played" : "Play now"}
         </button>
       </div>
+      {searchParams.get("walletAddress") && (
+        <div className="text-center mt-2 text-[8px] text-[#80808060]">
+          {searchParams.get("walletAddress")}
+        </div>
+      )}
     </div>
   );
 };
