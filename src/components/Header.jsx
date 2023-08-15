@@ -11,7 +11,7 @@ const Header = ({ isMain }) => {
           <img className="ml-2" width={50} src={Logo} alt="Your SVG" />
         </div>
       </div>
-      <div className="w-full md:h-[500px] md:rounded-[20px] flex justify-center mt-2">
+      <div className="w-full md:rounded-[20px] flex justify-center mt-2">
         <img
           className="w-full"
           src={isMain ? allInnovator : Present}

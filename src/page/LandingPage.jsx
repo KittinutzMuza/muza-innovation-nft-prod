@@ -9,7 +9,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!searchParams.get("walletAddress")) {
+    if (!searchParams.get("authToken")) {
       navigate("/unauthorized");
     } else {
       (async () => {
@@ -52,9 +52,9 @@ const LandingPage = () => {
           {isPlayed ? "Already Played" : "Play now"}
         </button>
       </div>
-      {searchParams.get("walletAddress") && (
+      {searchParams.get("authToken") && (
         <div className="text-center mt-2 text-[8px] text-[#80808060]">
-          {searchParams.get("walletAddress")}
+          {searchParams.get("authToken")}
         </div>
       )}
     </div>
