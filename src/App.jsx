@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="py-4 gap-y-11">
       <div className="flex justify-center">
-        <h1 className="text-3xl font-bold">MUZA Techsauce </h1>
+        <h1 className="text-3xl font-bold">MUZA Techsauce</h1>
         <img className="ml-2" src={Logo} alt="Your SVG" />
       </div>
       <div className="width-full flex justify-center mt-11">
