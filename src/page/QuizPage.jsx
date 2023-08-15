@@ -47,6 +47,13 @@ const QuizPage = () => {
     }));
   };
   useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
+  useEffect(() => {
     if (!searchParams.get("authToken") && !searchParams.get("walletAddress")) {
       navigate("/download-muza");
     }
