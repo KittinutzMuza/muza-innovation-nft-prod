@@ -169,11 +169,6 @@ const QuizPage = () => {
         </>
       ) : (
         <div>
-          <div className="px-6 mt-9">
-            <h3 className="text-[18px] font-bold">
-              What types of innovator you are ?
-            </h3>
-          </div>
           <div className="px-8">
             {quizConfig.map((quiz, quizIndex) => {
               const answers = quiz?.answers ?? [];
@@ -214,7 +209,7 @@ const QuizPage = () => {
               disabled={isDisabledButton}
               onClick={handleSubmitForm}
             >
-              Done
+              Submit
             </button>
           </div>
         </div>

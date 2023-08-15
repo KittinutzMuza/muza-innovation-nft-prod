@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Logo from "../assets/muza-logo.png";
 import Present from "../assets/muza-tech-suace-present.svg";
-import allInnovator from "../assets/muza-tech-sauce-innovator.svg";
+import allInnovator from "../assets/muza-tech-sauce-innovator.png";
 const Header = ({ isMain }) => {
   return (
     <div>

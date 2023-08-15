@@ -182,21 +182,69 @@ export const innovatorScreenTheme = {
   SPECIALIST: {
     background: "#9E1312",
     nftImage: "specialist",
+    description: `the "Specialist" refers to an individual who excels in a particular domain or field of expertise, contributing to innovation through their deep knowledge and focused skills.`,
+    descriptionKey: `
+    <li><b>Depth of expertise</b> - Specialists have extensive knowledge and mastery in a specific area. They possess a deep understanding of their chosen field, allowing them to identify nuances and opportunities for innovation.</li>
+    <br><li><b>Research-oriented</b> - They are driven by a curiosity to explore their domain further and uncover new insights. Specialists often engage in rigorous research and experimentation.</li>
+    <br><li><b>Precision</b> - Specialists pay meticulous attention to detail, ensuring accuracy and excellence in their work. Their precision contributes to the quality of their innovations.</li>
+    <br><li><b>Problem-solving</b> - They tackle complex problems by leveraging their specialized knowledge. Specialists have a knack for finding novel solutions within their domain.</li>
+    <br><li><b>Innovation through advancement</b> -  Specialists drive innovation by pushing the boundaries of current knowledge within their domain. Their advancements often lead to breakthroughs and new perspectives.</li>
+    <br><li><b>Thought leadership</b> - Many Specialists become thought leaders in their field, sharing insights, research findings, and innovative ideas with the broader community.</li>
+    `,
+    descriptionEnd: `Specialists play a crucial role in driving innovation by delving deeply into specific areas and pushing the boundaries of knowledge. Their contributions often lead to transformative advancements that shape industries, fields of study, and the way we understand the world.`,
   },
   EXPLORER: {
     background: "#056C3C",
     nftImage: "explorer",
+    description: `the “Explorer” is characterized by their adventurous spirit, curiosity, and willingness to venture into uncharted territory. They thrive on seeking out new experiences, uncovering new ideas, and pushing the boundaries of existing knowledge`,
+    descriptionKey: `
+    <li><b>Curiosity</b> - Explorers have an insatiable desire to learn and discover. They ask questions, investigate different perspectives, and are constantly on the lookout for new information and insights.</li>
+    <br><li><b>Open-mindedness</b> - They are receptive to unconventional ideas and are willing to challenge traditional norms and assumptions. This open-mindedness often leads them to consider viewpoints that others might overlook.</li>
+    <br><li><b>Cross-disciplinary thinking</b> - They frequently draw inspiration from various fields and domains, often combining disparate ideas to generate innovative solutions. This cross-disciplinary approach allows them to see connections that others might miss.</li>
+    <br><li><b>Creativity</b> - Their capacity to generate new and unique ideas is a fundamental aspect of their innovator type. Explorers excel at thinking "outside the box" and generating fresh concepts.</li>
+    <br><li><b>Continuous learning</b> - Explorers have a lifelong commitment to learning and personal growth. They actively seek out new knowledge and skills to fuel their innovative endeavors.</li>
+    `,
+    descriptionEnd: `Explorers contribute to innovation by pushing the boundaries of existing knowledge and exploring uncharted territories, ultimately leading to the creation of groundbreaking products, services, and concepts that reshape industries and societies.`,
   },
   VISIONARY: {
     background: "#ED9F03",
     nftImage: "visionary",
+    description: `the "Visionary" refers to an individual who possesses a unique and far-reaching perspective on the future possibilities and potential advancements. Visionaries are known for their ability to imagine bold and transformative ideas that can reshape industries, societies, and even the way we perceive the world.`,
+    descriptionKey: `
+    <li><b>Imagination</b> - Visionaries have a vivid and expansive imagination that allows them to envision possibilities that others might not even consider. They can see beyond current limitations and imagine innovative solutions and concepts.</li>
+    <br><li><b>Big-picture thinking</b> - Visionaries excel at seeing the larger context and connecting various trends, technologies, and ideas. They can identify patterns and trends that others might miss.</li>
+    <br><li><b>Inspirational communication</b> - Visionaries are adept at conveying their ideas and visions to others in a compelling and inspiring manner. They have the ability to ignite passion and excitement among people who share their vision.</li>
+    <br><li><b>Risk-taking</b> - They are often willing to take significant risks to bring their visionary ideas to life. This willingness to take bold steps can lead to groundbreaking innovations.</li>
+    <br><li><b>Change agents</b> - Visionaries are agents of change who challenge the status quo and disrupt established norms. They drive innovation by pushing for new ideas and approaches.</li>
+    `,
+    descriptionEnd: `Visionaries play a crucial role in driving innovation by pushing the boundaries of what is currently possible and inspiring others to think beyond the immediate constraints. `,
   },
   ADVOCATE: {
     background: "#FF6600",
     nftImage: "advocate",
+    description: `
+    the "Visionary" refers to an individual who possesses a unique and far-reaching perspective on the future possibilities and potential advancements. Visionaries are known for their ability to imagine bold and transformative ideas that can reshape industries, societies, and even the way we perceive the world.
+    `,
+    descriptionKey: `
+    <li><b>Imagination</b> - Visionaries have a vivid and expansive imagination that allows them to envision possibilities that others might not even consider. They can see beyond current limitations and imagine innovative solutions and concepts.</li>
+    <br><li><b>Big-picture thinking</b> - Visionaries excel at seeing the larger context and connecting various trends, technologies, and ideas. They can identify patterns and trends that others might miss.</li>
+    <br><li><b>Inspirational communication</b> - Visionaries are adept at conveying their ideas and visions to others in a compelling and inspiring manner. They have the ability to ignite passion and excitement among people who share their vision.</li>
+    <br><li><b>Risk-taking</b> - They are often willing to take significant risks to bring their visionary ideas to life. This willingness to take bold steps can lead to groundbreaking innovations.</li>
+    <br><li><b>Change agents</b> - Visionaries are agents of change who challenge the status quo and disrupt established norms. They drive innovation by pushing for new ideas and approaches.</li>
+    `,
+    descriptionEnd: `Visionaries play a crucial role in driving innovation by pushing the boundaries of what is currently possible and inspiring others to think beyond the immediate constraints. `,
   },
   BUILDER: {
-    background: "#BB8559",
+    background: "#AC845C",
     nftImage: "builder",
+    description: `the “Builder” refers to an individual who excels at turning ideas and concepts into practical, tangible realities. Builders are known for their ability to execute and bring projects to fruition with precision and efficiency. They thrive on creating structures, systems, and solutions that have a concrete impact on the world around them.`,
+    descriptionKey: `
+    <li><b>Practicality</b> - Builders have a strong practical orientation. They are focused on creating solutions that are functional, reliable, and effective in addressing real-world problems.</li>
+    <br><li><b>Organizational skills</b> - Builders excel in planning and organizing complex tasks. They create step-by-step roadmaps to guide their projects from inception to completion.</li>
+    <br><li><b>Efficiency</b> - Builders are results-driven and aim to achieve their objectives with maximum efficiency. They streamline processes and eliminate unnecessary steps to optimize their work.</li>
+    <br><li><b>Iterative improvement</b> - Builders are open to refining and improving their work based on feedback and experience. They seek continuous improvement in their projects and processes.</li>
+    <br><li><b>Technical expertise</b> - Depending on the field, Builders often have a strong foundation in technical skills related to their projects. This expertise allows them to ensure the quality and functionality of their creations.</li>
+    `,
+    descriptionEnd: `Builders play a crucial role in the innovation process by translating conceptual innovations into practical applications that can be implemented and used.`,
   },
 };
