@@ -8,9 +8,16 @@ import explorerNFT from "../assets/images/explorer.png";
 import advocateNFT from "../assets/images/advocate.png";
 import builderNFT from "../assets/images/builder.png";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 const ResultPage = () => {
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
   let { innovatorType } = useParams();
   const THEME = innovatorScreenTheme[innovatorType];
   const innovatorNFT = useMemo(() => {
@@ -41,7 +48,9 @@ const ResultPage = () => {
       }}
       className="py-[2em] overflow-hidden"
     >
-      <div className="px-6 font-bold text-[24px] text-white">THE {innovatorType}</div>
+      <div className="px-6 font-bold text-[24px] text-white">
+        THE {innovatorType}
+      </div>
       <div className="relative h-[340px]">
         <Lottie
           className="absolute"

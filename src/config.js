@@ -223,16 +223,16 @@ export const innovatorScreenTheme = {
     background: "#FF6600",
     nftImage: "advocate",
     description: `
-    the "Visionary" refers to an individual who possesses a unique and far-reaching perspective on the future possibilities and potential advancements. Visionaries are known for their ability to imagine bold and transformative ideas that can reshape industries, societies, and even the way we perceive the world.
+    the "Advocate" refers to an individual who is passionate about driving change and innovation by advocating for meaningful causes, ideas, or solutions. Advocates are dedicated to creating a positive impact and often channel their efforts into raising awareness, promoting adoption, and mobilizing support for innovative initiatives.
     `,
     descriptionKey: `
-    <li><b>Imagination</b> - Visionaries have a vivid and expansive imagination that allows them to envision possibilities that others might not even consider. They can see beyond current limitations and imagine innovative solutions and concepts.</li>
-    <br><li><b>Big-picture thinking</b> - Visionaries excel at seeing the larger context and connecting various trends, technologies, and ideas. They can identify patterns and trends that others might miss.</li>
-    <br><li><b>Inspirational communication</b> - Visionaries are adept at conveying their ideas and visions to others in a compelling and inspiring manner. They have the ability to ignite passion and excitement among people who share their vision.</li>
-    <br><li><b>Risk-taking</b> - They are often willing to take significant risks to bring their visionary ideas to life. This willingness to take bold steps can lead to groundbreaking innovations.</li>
-    <br><li><b>Change agents</b> - Visionaries are agents of change who challenge the status quo and disrupt established norms. They drive innovation by pushing for new ideas and approaches.</li>
+    <li><b>Communication skills</b> - They excel at communicating their message effectively to diverse audiences. Advocates use compelling narratives, storytelling, and persuasion to rally support for their initiatives.</li>
+    <br><li><b>Empathy</b> - Advocates have a strong sense of empathy and are attuned to the needs and concerns of others. They are motivated to create solutions that address real-world challenges and improve lives.</li>
+    <br><li><b>Networking</b> - Advocates are skilled networkers who build relationships with individuals, organizations, and stakeholders that share their vision. They leverage these connections to amplify their impact.</li>
+    <br><li><b>Collaboration</b> - They understand the power of collaboration and are often involved in partnerships with other individuals, organizations, and entities that align with their goals.</li>
+    <br><li><b>Community-building</b> - Advocates create and foster communities of like-minded individuals who share their passion and vision. These communities can amplify the impact of their efforts.</li>
     `,
-    descriptionEnd: `Visionaries play a crucial role in driving innovation by pushing the boundaries of what is currently possible and inspiring others to think beyond the immediate constraints. `,
+    descriptionEnd: `Advocates play a vital role in the innovation ecosystem by generating awareness, mobilizing support. Their ability to communicate effectively and inspire action can significantly contribute to the success of initiatives aimed at positive change and improvement.`,
   },
   BUILDER: {
     background: "#AC845C",
