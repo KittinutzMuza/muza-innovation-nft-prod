@@ -10,6 +10,7 @@ const LandingPage = () => {
   const [walletAddress, setWalletAddress] = useState("");
   const navigate = useNavigate();
   const token = searchParams.get("authToken");
+  const [count, setCount] = useState(0);
   useEffect(() => {
     if (!searchParams.get("authToken")) {
       navigate("/unauthorized");
@@ -46,7 +47,10 @@ const LandingPage = () => {
       <Header isMain />
       <div className="flex justify-center mt-9">
         <div>
-          <div className="text-[18px] font-bold">
+          <div
+            className="text-[18px] font-bold"
+            onClick={() => setCount((v) => v + 1)}
+          >
             What types of innovator you are ?
           </div>
           <div className="mt-2 text-[12px] text-[#808080] font-[300]">
@@ -64,9 +68,9 @@ const LandingPage = () => {
           {isPlayed ? "Already Played" : "Play now"}
         </button>
       </div>
-      {searchParams.get("authToken") && (
+      {token && count > 10 && (
         <div className="text-center mt-2 text-[8px] text-[#80808060]">
-          {searchParams.get("authToken")}
+          {token}
         </div>
       )}
     </div>
