@@ -68,6 +68,11 @@ const LandingPage = () => {
           {isPlayed ? "Already Played" : "Play now"}
         </button>
       </div>
+      {walletAddress && (
+        <div className="text-center mt-2 text-[8px] text-[#80808060]">
+          {walletAddress}
+        </div>
+      )}
       {token && count > 10 && (
         <div className="text-center mt-2 text-[8px] text-[#80808060]">
           {token}
