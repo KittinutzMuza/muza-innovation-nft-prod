@@ -80,27 +80,15 @@ const QuizPage = () => {
   }, [answerCollector]);
 
   const winnerInnovationType = useMemo(() => {
-    // console.log({
-    //   calculation,
-    // });
-    const listWinner = Object.keys(calculation).reduce((acc = [], next) => {
-      if (acc.length == 0) {
-        acc[0] = next;
-        return acc;
+    const maxValue = Math.max(...Object.values(calculation));
+    let listWinner = [];
+    const keysCal = Object.keys(calculation);
+    for (let i = 0; i < keysCal.length; i++) {
+      if (calculation[keysCal[i]] === maxValue) {
+        listWinner.push(keysCal[i]);
       }
-      const lastScore = calculation[acc[0]];
-      const nextScore = calculation[next];
+    }
 
-      if (lastScore && lastScore > nextScore) {
-        return acc;
-      } else if (lastScore && lastScore < nextScore) {
-        acc[0] = next;
-        return acc;
-      } else if (lastScore && lastScore === nextScore) {
-        acc.push(next);
-        return acc;
-      }
-    }, []);
     if (isDisabledButton) {
       return "";
     }
@@ -186,9 +174,11 @@ const QuizPage = () => {
                   </label>
                   {answers.map((answer, index) => {
                     return (
-                      <div className="mt-3 flex items-start" key={answer.label}>
+                      <div
+                        className="mt-3 flex items-center gap-2"
+                        key={answer.label}
+                      >
                         <input
-                          className="mt-1 mx-2"
                           id={`quiz-` + quiz.questionId + index}
                           type="radio"
                           value={answer.value}
